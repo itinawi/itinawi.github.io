@@ -1,31 +1,526 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ihssan Tinawi</title>
+  <style>
+    :root {
+      --bg: #f5f0e8;
+      --surface: #faf7f2;
+      --surface-2: #ede8df;
+      --border: rgba(0,0,0,0.08);
+      --border-hover: rgba(0,0,0,0.15);
+      --text: #1a1a1a;
+      --text-muted: #7a7060;
+      --accent: #c96442;
+      --accent-2: #5a4fcf;
+      --tag-bg: rgba(90,79,207,0.07);
+      --tag-color: #5a4fcf;
+      --tag-border: rgba(90,79,207,0.18);
+      --nav-bg: rgba(245,240,232,0.85);
+    }
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-    <title>Ihssan Tinawi</title>
-  </head>
-  <body>
-    <h2>Hi, my name is Ihssan.</h2>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 40% at 50% -5%, rgba(201,100,66,0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 35% at 90% 90%, rgba(90,79,207,0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-  </body>
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 58px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* Main */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 116px 2rem 80px;
+    }
+
+    /* Hero */
+    .hero { margin-bottom: 80px; }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.1rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      color: #111;
+    }
+
+    .hero-sub {
+      font-size: 1.075rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.78;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.18s;
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-2);
+      border-color: var(--border-hover);
+    }
+
+    /* Sections */
+    section { margin-bottom: 68px; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Cards */
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem;
+      margin-bottom: 10px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .exp-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
+    .exp-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    .exp-logo {
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      object-fit: contain;
+      flex-shrink: 0;
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+
+    .exp-logo-svg {
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .exp-company {
+      font-size: 0.975rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .exp-company a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .exp-company a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .exp-badge {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .exp-role {
+      font-size: 0.825rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-description {
+      font-size: 0.9375rem;
+      color: #555045;
+      line-height: 1.75;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.9rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 5px;
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      border: 1px solid var(--tag-border);
+      font-weight: 500;
+    }
+
+    /* Education card extras */
+    .edu-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.9rem;
+      font-size: 0.835rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .edu-link:hover { opacity: 0.75; }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1.25rem; }
+      main { padding: 96px 1.25rem 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Ihssan Tinawi</span>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-label">Based in San Francisco</div>
+      <h1>Engineer building<br>things that scale.</h1>
+      <p class="hero-sub">
+        AI and software engineer with a track record of going from zero to one at
+        startups and turning hard technical problems into shipped products.
+      </p>
+      <div class="hero-links">
+        <a href="https://github.com/itinawi" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/itinawi" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <!-- Work -->
+    <section id="work">
+      <div class="section-label">Experience</div>
+
+      <!-- Nash -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <img
+            src="https://logo.clearbit.com/usenash.com"
+            alt="Nash logo"
+            class="exp-logo"
+            onerror="this.style.display='none'"
+          >
+          <span class="exp-company">Nash <span class="exp-badge">· A16z + YC</span></span>
+        </div>
+        <div class="exp-role">Founding Software Engineer</div>
+        <p class="exp-description">
+          I joined Nash as one of the first engineers and spent four years building its delivery
+          orchestration platform from scratch. The core challenge was making it simple for thousands of
+          businesses to coordinate across a fragmented landscape of third-party couriers and internal
+          fleets — so I designed systems for automated provider selection, real-time tracking, and
+          flexible workflow customization. Along the way I built 12 API integrations, onboarded
+          enterprise customers like URBN and Walmart, and created a custom GPT that let a team of
+          three integration engineers do the work of a much larger org. Products I shipped — including
+          the Nash Shopify App and Nash Returns — grew to hundreds of customers.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Platform Engineering</span>
+          <span class="tag">Python</span>
+          <span class="tag">APIs</span>
+          <span class="tag">GPT</span>
+          <span class="tag">Shopify</span>
+        </div>
+      </div>
+
+      <!-- Primer AI -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <img
+            src="https://logo.clearbit.com/primer.ai"
+            alt="Primer AI logo"
+            class="exp-logo"
+            onerror="this.style.display='none'"
+          >
+          <span class="exp-company">Primer AI</span>
+        </div>
+        <div class="exp-role">AI Product Engineer → Senior AI Product Engineer</div>
+        <p class="exp-description">
+          My first role out of school put me on the multilingual NLP frontier. As tech lead for the
+          languages team, I led the effort to expand Primer's intelligence platform beyond English —
+          adding Arabic, Spanish, Mandarin, and Portuguese support across 10+ microservices. That meant
+          implementing plenty of ML features from scratch (NER, summarization, people resolution, and more
+          for Arabic), and back-filling over 10 million historical documents into the new pipeline.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">NLP</span>
+          <span class="tag">Multilingual ML</span>
+          <span class="tag">Python</span>
+          <span class="tag">Microservices</span>
+        </div>
+      </div>
+
+      <!-- General Motors -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <img
+            src="https://logo.clearbit.com/gm.com"
+            alt="General Motors logo"
+            class="exp-logo"
+            onerror="this.style.display='none'"
+          >
+          <span class="exp-company">General Motors Autonomous</span>
+        </div>
+        <div class="exp-role">Software Engineer Intern</div>
+        <p class="exp-description">
+          Worked on the perception stack for autonomous vehicles, using radar data to improve
+          simultaneous localization and mapping (SLAM) — helping the car build a more accurate,
+          real-time model of its surroundings.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">SLAM</span>
+          <span class="tag">Radar</span>
+          <span class="tag">Autonomous Vehicles</span>
+          <span class="tag">C++</span>
+        </div>
+      </div>
+
+      <!-- Goldman Sachs -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <img
+            src="https://logo.clearbit.com/goldmansachs.com"
+            alt="Goldman Sachs logo"
+            class="exp-logo"
+            onerror="this.style.display='none'"
+          >
+          <span class="exp-company">Goldman Sachs</span>
+        </div>
+        <div class="exp-role">Software Engineer Intern</div>
+        <p class="exp-description">
+          Worked on performance optimization for internal pricing models, improving the speed and
+          efficiency of financial computations used across trading workflows.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Performance Engineering</span>
+          <span class="tag">Java</span>
+          <span class="tag">Finance</span>
+        </div>
+      </div>
+
+      <!-- Emerald Innovations -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <img
+            src="https://logo.clearbit.com/emmeraldinno.com"
+            alt="Emerald Innovations logo"
+            class="exp-logo"
+            onerror="this.style.display='none'"
+          >
+          <span class="exp-company">
+            <a href="https://emmeraldinno.com" target="_blank" rel="noopener">Emerald Innovations</a>
+          </span>
+        </div>
+        <div class="exp-role">Full Stack Developer</div>
+        <p class="exp-description">
+          Built full-stack web infrastructure for a person-tracking system that used WiFi signals —
+          translating research-stage technology into a functional, demo-ready product.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Full Stack</span>
+          <span class="tag">WiFi Sensing</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <div class="section-label">Education</div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <img
+            src="https://logo.clearbit.com/mit.edu"
+            alt="MIT logo"
+            class="exp-logo"
+            onerror="this.style.display='none'"
+          >
+          <span class="exp-company">Massachusetts Institute of Technology</span>
+        </div>
+        <div class="exp-role">M.Eng. Computer Science (AI) · B.S. Computer Science &amp; Economics</div>
+        <p class="exp-description">
+          Graduated with a 4.8/5.0 GPA. Studied everything from performance engineering and
+          cryptocurrencies to NLP and financial markets. Executive chair of Tau Beta Pi, member of
+          Eta Kappa Nu, co-directed <a href="https://www.youtube.com/playlist?list=PLiAPblmZ94sJefI8mlbc0ngyN2c8jAZJo">MIT Arab SciTech conference</a>, and winner of the 6.172 Leiserchess Performance Engineering Competition.
+          Completed the Gordon-MIT Engineering Leadership Program.
+        </p>
+        <a href="https://www.facebook.com/watch/?v=1316768858366742" target="_blank" rel="noopener" class="edu-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Watch MIT News feature
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      ihssan [dot] tinawi [at] gmail [dot] com
+      &nbsp;·&nbsp;
+      <a href="https://github.com/itinawi" target="_blank" rel="noopener">github.com/itinawi</a>
+      &nbsp;·&nbsp;
+      San Francisco, CA
+    </p>
+  </footer>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168665090-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-168665090-1');
+  </script>
+
+</body>
 </html>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168665090-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-168665090-1');
-</script>
