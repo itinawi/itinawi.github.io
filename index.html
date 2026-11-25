@@ -4,353 +4,382 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ihssan Tinawi</title>
+  <meta name="description" content="Ihssan Tinawi — Forward Deployed Engineer at Google building AI agents for Fortune 500 companies. Previously Founding Software Engineer at Nash and tech lead at Primer AI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f5f0e8;
-      --surface: #faf7f2;
-      --surface-2: #ede8df;
-      --border: rgba(0,0,0,0.08);
-      --border-hover: rgba(0,0,0,0.15);
-      --text: #1a1a1a;
-      --text-muted: #7a7060;
-      --accent: #c96442;
-      --accent-2: #5a4fcf;
-      --tag-bg: rgba(90,79,207,0.07);
-      --tag-color: #5a4fcf;
-      --tag-border: rgba(90,79,207,0.18);
-      --nav-bg: rgba(245,240,232,0.85);
+      --bg: #fafaf7;
+      --ink: #1b1b18;
+      --ink-strong: #141412;
+      --body: #3c3c37;
+      --muted: #66665e;
+      --subtle: #78786f;
+      --accent: #1d5c42;
+      --accent-underline: rgba(29, 92, 66, 0.34);
+      --rule: #e4e2da;
+      --rule-double: #d6d3c8;
+      --serif: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    ::selection {
+      background: rgba(29, 92, 66, 0.14);
+      color: var(--ink-strong);
+    }
 
     body {
       background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15.5px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
       min-height: 100vh;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 40% at 50% -5%, rgba(201,100,66,0.06) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 35% at 90% 90%, rgba(90,79,207,0.04) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
+    a {
+      transition: color 0.16s ease, border-color 0.16s ease, text-decoration-color 0.16s ease;
     }
 
-    /* Nav */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
+    .ext-arrow {
+      display: inline-block;
+      font-size: 0.85em;
+      margin-left: 2px;
+      transition: transform 0.16s ease;
+    }
+
+    a:hover .ext-arrow {
+      transform: translate(1.5px, -1.5px);
+    }
+
+    /* Header Navigation */
+    header {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 28px 18px;
       display: flex;
-      align-items: center;
+      align-items: baseline;
       justify-content: space-between;
-      padding: 0 2rem;
-      height: 58px;
-      background: var(--nav-bg);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--rule);
     }
 
-    .nav-name {
-      font-size: 0.9rem;
-      font-weight: 600;
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      font-weight: 500;
       letter-spacing: -0.01em;
-      color: var(--text);
+      color: var(--ink-strong);
+      text-decoration: none;
     }
 
-    .nav-links {
+    nav ul {
       display: flex;
-      gap: 2rem;
+      gap: 22px;
       list-style: none;
     }
 
-    .nav-links a {
-      color: var(--text-muted);
+    nav a {
+      font-size: 0.85rem;
+      color: var(--muted);
       text-decoration: none;
-      font-size: 0.875rem;
-      transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--text); }
-
-    /* Main */
-    main {
-      position: relative;
-      z-index: 1;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 116px 2rem 80px;
-    }
-
-    /* Hero */
-    .hero { margin-bottom: 80px; }
-
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.78rem;
+    nav a:hover {
       color: var(--accent);
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 1.4rem;
+    }
+
+    /* Main Column */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 58px 28px 68px;
+    }
+
+    /* Hero / About */
+    .hero {
+      margin-bottom: 64px;
+    }
+
+    .hero-kicker {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--accent);
+      margin-bottom: 14px;
     }
 
     h1 {
-      font-size: clamp(2.2rem, 5vw, 3.1rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 1.2rem;
-      color: #111;
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5.5vw, 3.3rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.12;
+      color: var(--ink-strong);
+      margin-bottom: 22px;
     }
 
-    .hero-sub {
-      font-size: 1.075rem;
-      color: var(--text-muted);
-      max-width: 520px;
-      line-height: 1.78;
+    .about-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .about-copy p {
+      font-size: 1rem;
+      color: var(--body);
+      line-height: 1.8;
     }
 
     .hero-links {
       display: flex;
-      gap: 0.75rem;
-      margin-top: 2rem;
+      gap: 22px;
+      margin-top: 26px;
       flex-wrap: wrap;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
+    .hero-link {
+      font-size: 0.88rem;
       font-weight: 500;
+      color: var(--accent);
       text-decoration: none;
-      transition: all 0.18s;
-      border: 1px solid var(--border);
+      border-bottom: 1px solid var(--accent-underline);
+      padding-bottom: 1px;
     }
 
-    .btn-secondary {
-      background: var(--surface);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover {
-      background: var(--surface-2);
-      border-color: var(--border-hover);
+    .hero-link:hover {
+      border-bottom-color: var(--accent);
     }
 
     /* Sections */
-    section { margin-bottom: 68px; }
+    section {
+      margin-bottom: 60px;
+    }
 
-    .section-label {
-      font-size: 0.72rem;
+    section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    h2.section-heading {
+      font-family: var(--serif);
+      font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      color: var(--muted);
+      padding-bottom: 10px;
+      border-bottom: 3px double var(--rule-double);
+      margin-bottom: 30px;
     }
 
-    /* Cards */
-    .exp-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.6rem;
-      margin-bottom: 10px;
-      transition: border-color 0.2s, box-shadow 0.2s;
+    /* Entries */
+    .entry {
+      padding: 2px 0 30px 20px;
+      margin-bottom: 30px;
+      border-left: 2px solid #e6e4dc;
+      transition: border-color 0.2s ease;
     }
 
-    .exp-card:hover {
-      border-color: var(--border-hover);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    .entry:hover {
+      border-left-color: var(--accent);
     }
 
-    .exp-header {
+    .entry:last-child {
+      margin-bottom: 0;
+      padding-bottom: 4px;
+    }
+
+    .entry-meta {
       display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.3rem;
+      align-items: baseline;
+      justify-content: space-between;
       flex-wrap: wrap;
+      gap: 4px 16px;
+      margin-bottom: 8px;
     }
 
-    .exp-logo {
-      width: 24px;
-      height: 24px;
-      border-radius: 5px;
-      object-fit: contain;
-      flex-shrink: 0;
-      background: #fff;
-      border: 1px solid var(--border);
+    .entry-company {
+      font-family: var(--serif);
+      font-size: 1.24rem;
+      font-weight: 500;
+      color: var(--ink-strong);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
     }
 
-    .exp-logo-svg {
-      width: 24px;
-      height: 24px;
-      border-radius: 5px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff;
-      border: 1px solid var(--border);
-      overflow: hidden;
-    }
-
-    .exp-company {
-      font-size: 0.975rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .exp-company a {
+    .entry-company a {
       color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid #d4d1c7;
+    }
+
+    .entry-company a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .entry-badge {
+      font-family: var(--sans);
+      font-size: 0.74rem;
+      font-weight: 400;
+      color: var(--subtle);
+      margin-left: 5px;
+    }
+
+    .entry-role {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.98rem;
+      color: var(--accent);
+      line-height: 1.4;
+    }
+
+    .entry-desc {
+      font-size: 0.945rem;
+      color: var(--body);
+      line-height: 1.78;
+    }
+
+    .entry-desc a,
+    .edu-link {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: var(--accent-underline);
+      text-underline-offset: 3px;
+    }
+
+    .entry-desc a:hover,
+    .edu-link:hover {
+      text-decoration-color: var(--accent);
+    }
+
+    .edu-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 28px 54px;
+      border-top: 1px solid var(--rule);
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    footer a {
+      color: var(--accent);
       text-decoration: none;
     }
 
-    .exp-company a:hover {
+    footer a:hover {
       text-decoration: underline;
       text-underline-offset: 3px;
     }
 
-    .exp-badge {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-
-    .exp-role {
-      font-size: 0.825rem;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 0.8rem;
-    }
-
-    .exp-description {
-      font-size: 0.9375rem;
-      color: #555045;
-      line-height: 1.75;
-    }
-
-    .exp-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.9rem;
-    }
-
-    .tag {
-      font-size: 0.72rem;
-      padding: 0.18rem 0.55rem;
-      border-radius: 5px;
-      background: var(--tag-bg);
-      color: var(--tag-color);
-      border: 1px solid var(--tag-border);
-      font-weight: 500;
-    }
-
-    /* Education card extras */
-    .edu-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      margin-top: 0.9rem;
-      font-size: 0.835rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      transition: opacity 0.2s;
-    }
-
-    .edu-link:hover { opacity: 0.75; }
-
-    /* Footer */
-    footer {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 2rem;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      border-top: 1px solid var(--border);
-    }
-
-    footer a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    footer a:hover { color: var(--text); }
-
     @media (max-width: 600px) {
-      nav { padding: 0 1rem; }
-      .nav-links { gap: 1.25rem; }
-      main { padding: 96px 1.25rem 60px; }
+      header {
+        padding: 24px 20px 16px;
+      }
+
+      main {
+        padding: 42px 20px 54px;
+      }
+
+      .hero {
+        margin-bottom: 48px;
+      }
+
+      .entry {
+        padding-left: 16px;
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+      }
+
+      footer {
+        padding: 20px 20px 44px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <span class="nav-name">Ihssan Tinawi</span>
-    <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#education">Education</a></li>
-    </ul>
-  </nav>
+  <header>
+    <a href="#top" class="brand">Ihssan Tinawi</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#work">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <main>
+  <main id="top">
 
-    <!-- Hero -->
     <div class="hero">
-      <div class="hero-label">Turning hard problems into simple solutions</div>
-      <h1>Engineer building<br>things that scale.</h1>
-      <p class="hero-sub">
-        AI and software engineer with a track record of going from zero to one at
-        startups and turning hard technical problems into shipped products.
-      </p>
+      <div class="hero-kicker">Turning hard problems into simple solutions</div>
+      <h1>Ihssan Tinawi</h1>
+      <div class="about-copy">
+        <p>
+          I'm a Forward Deployed Engineer at Google building AI agents for Fortune 500 companies.
+          Previously, I was a founding software engineer at Nash and a tech lead at Primer AI.
+        </p>
+        <p>
+          I love working on new initiatives and taking products from 0 to 1. The ambiguity of a
+          problem and having a blank slate is where I thrive.
+        </p>
+      </div>
       <div class="hero-links">
-        <a href="https://github.com/itinawi" target="_blank" rel="noopener" class="btn btn-secondary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
+        <a href="https://github.com/itinawi" target="_blank" rel="noopener" class="hero-link">
+          GitHub <span class="ext-arrow" aria-hidden="true">↗</span>
         </a>
-        <a href="https://linkedin.com/in/itinawi" target="_blank" rel="noopener" class="btn btn-secondary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
+        <a href="https://linkedin.com/in/itinawi" target="_blank" rel="noopener" class="hero-link">
+          LinkedIn <span class="ext-arrow" aria-hidden="true">↗</span>
         </a>
       </div>
     </div>
 
-    <!-- Work -->
     <section id="work">
-      <div class="section-label">Experience</div>
+      <h2 class="section-heading">Experience</h2>
 
-      <!-- Nash -->
-      <div class="exp-card">
-        <div class="exp-header">
-          <img
-            src="https://logo.clearbit.com/usenash.com"
-            alt="Nash logo"
-            class="exp-logo"
-            onerror="this.style.display='none'"
-          >
-          <span class="exp-company">Nash <span class="exp-badge">· A16z + YC</span></span>
+      <article class="entry">
+        <div class="entry-meta">
+          <div class="entry-company">Google</div>
+          <div class="entry-role">Forward Deployed Engineer</div>
         </div>
-        <div class="exp-role">Founding Software Engineer</div>
-        <p class="exp-description">
+        <p class="entry-desc">
+          Building and deploying production AI agents for Fortune 500 companies.
+          I work directly with enterprise engineering and business teams to turn
+          complex operational workflows into reliable, end-to-end agentic systems —
+          bridging frontier models with real-world production infrastructure.
+        </p>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <div class="entry-company">Nash <span class="entry-badge">A16z + YC</span></div>
+          <div class="entry-role">Founding Software Engineer</div>
+        </div>
+        <p class="entry-desc">
           I joined Nash as one of the first engineers and spent four years building its delivery
           orchestration platform from scratch. The core challenge was making it simple for thousands of
           businesses to coordinate across a fragmented landscape of third-party couriers and internal
@@ -360,157 +389,87 @@
           three integration engineers do the work of a much larger org. Products I shipped — including
           the Nash Shopify App and Nash Returns — grew to hundreds of customers.
         </p>
-        <div class="exp-tags">
-          <span class="tag">Platform Engineering</span>
-          <span class="tag">Python</span>
-          <span class="tag">APIs</span>
-          <span class="tag">GPT</span>
-          <span class="tag">Shopify</span>
-        </div>
-      </div>
+      </article>
 
-      <!-- Primer AI -->
-      <div class="exp-card">
-        <div class="exp-header">
-          <img
-            src="https://logo.clearbit.com/primer.ai"
-            alt="Primer AI logo"
-            class="exp-logo"
-            onerror="this.style.display='none'"
-          >
-          <span class="exp-company">Primer AI</span>
+      <article class="entry">
+        <div class="entry-meta">
+          <div class="entry-company">Primer AI</div>
+          <div class="entry-role">AI Product Engineer → Senior AI Product Engineer</div>
         </div>
-        <div class="exp-role">AI Product Engineer → Senior AI Product Engineer</div>
-        <p class="exp-description">
+        <p class="entry-desc">
           My first role out of school put me on the multilingual NLP frontier. As tech lead for the
           languages team, I led the effort to expand Primer's intelligence platform beyond English —
           adding Arabic, Spanish, Mandarin, and Portuguese support across 10+ microservices. That meant
           implementing plenty of ML features from scratch (NER, summarization, people resolution, and more
           for Arabic), and back-filling over 10 million historical documents into the new pipeline.
         </p>
-        <div class="exp-tags">
-          <span class="tag">NLP</span>
-          <span class="tag">Multilingual ML</span>
-          <span class="tag">Python</span>
-          <span class="tag">Microservices</span>
-        </div>
-      </div>
+      </article>
 
-      <!-- General Motors -->
-      <div class="exp-card">
-        <div class="exp-header">
-          <img
-            src="https://logo.clearbit.com/gm.com"
-            alt="General Motors logo"
-            class="exp-logo"
-            onerror="this.style.display='none'"
-          >
-          <span class="exp-company">General Motors Autonomous</span>
+      <article class="entry">
+        <div class="entry-meta">
+          <div class="entry-company">General Motors Autonomous</div>
+          <div class="entry-role">Software Engineer Intern</div>
         </div>
-        <div class="exp-role">Software Engineer Intern</div>
-        <p class="exp-description">
+        <p class="entry-desc">
           Worked on the perception stack for autonomous vehicles, using radar data to improve
           simultaneous localization and mapping (SLAM) — helping the car build a more accurate,
           real-time model of its surroundings.
         </p>
-        <div class="exp-tags">
-          <span class="tag">SLAM</span>
-          <span class="tag">Radar</span>
-          <span class="tag">Autonomous Vehicles</span>
-          <span class="tag">C++</span>
-        </div>
-      </div>
+      </article>
 
-      <!-- Goldman Sachs -->
-      <div class="exp-card">
-        <div class="exp-header">
-          <img
-            src="https://logo.clearbit.com/goldmansachs.com"
-            alt="Goldman Sachs logo"
-            class="exp-logo"
-            onerror="this.style.display='none'"
-          >
-          <span class="exp-company">Goldman Sachs</span>
+      <article class="entry">
+        <div class="entry-meta">
+          <div class="entry-company">Goldman Sachs</div>
+          <div class="entry-role">Software Engineer Intern</div>
         </div>
-        <div class="exp-role">Software Engineer Intern</div>
-        <p class="exp-description">
+        <p class="entry-desc">
           Worked on performance optimization for internal pricing models, improving the speed and
           efficiency of financial computations used across trading workflows.
         </p>
-        <div class="exp-tags">
-          <span class="tag">Performance Engineering</span>
-          <span class="tag">Java</span>
-          <span class="tag">Finance</span>
-        </div>
-      </div>
+      </article>
 
-      <!-- Emerald Innovations -->
-      <div class="exp-card">
-        <div class="exp-header">
-          <img
-            src="https://logo.clearbit.com/emmeraldinno.com"
-            alt="Emerald Innovations logo"
-            class="exp-logo"
-            onerror="this.style.display='none'"
-          >
-          <span class="exp-company">
+      <article class="entry">
+        <div class="entry-meta">
+          <div class="entry-company">
             <a href="https://emmeraldinno.com" target="_blank" rel="noopener">Emerald Innovations</a>
-          </span>
+          </div>
+          <div class="entry-role">Full Stack Developer</div>
         </div>
-        <div class="exp-role">Full Stack Developer</div>
-        <p class="exp-description">
+        <p class="entry-desc">
           Built full-stack web infrastructure for a person-tracking system that used WiFi signals —
           translating research-stage technology into a functional, demo-ready product.
         </p>
-        <div class="exp-tags">
-          <span class="tag">Full Stack</span>
-          <span class="tag">WiFi Sensing</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Python</span>
-        </div>
-      </div>
-
+      </article>
     </section>
 
-    <!-- Education -->
     <section id="education">
-      <div class="section-label">Education</div>
+      <h2 class="section-heading">Education</h2>
 
-      <div class="exp-card">
-        <div class="exp-header">
-          <img
-            src="https://logo.clearbit.com/mit.edu"
-            alt="MIT logo"
-            class="exp-logo"
-            onerror="this.style.display='none'"
-          >
-          <span class="exp-company">Massachusetts Institute of Technology</span>
+      <article class="entry">
+        <div class="entry-meta">
+          <div class="entry-company">Massachusetts Institute of Technology</div>
+          <div class="entry-role">M.Eng. Computer Science (AI) · B.S. Computer Science &amp; Economics</div>
         </div>
-        <div class="exp-role">M.Eng. Computer Science (AI) · B.S. Computer Science &amp; Economics</div>
-        <p class="exp-description">
+        <p class="entry-desc">
           Graduated with a 4.8/5.0 GPA. Studied everything from performance engineering and
           cryptocurrencies to NLP and financial markets. Executive chair of Tau Beta Pi, member of
-          Eta Kappa Nu, co-directed <a href="https://www.youtube.com/playlist?list=PLiAPblmZ94sJefI8mlbc0ngyN2c8jAZJo">MIT Arab SciTech conference</a>, and winner of the 6.172 Leiserchess Performance Engineering Competition.
+          Eta Kappa Nu, co-directed <a href="https://www.youtube.com/playlist?list=PLiAPblmZ94sJefI8mlbc0ngyN2c8jAZJo" target="_blank" rel="noopener">MIT Arab SciTech conference</a>, and winner of the 6.172 Leiserchess Performance Engineering Competition.
           Completed the Gordon-MIT Engineering Leadership Program.
         </p>
         <a href="https://www.facebook.com/watch/?v=1316768858366742" target="_blank" rel="noopener" class="edu-link">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          Watch MIT News feature
+          Watch MIT News feature <span class="ext-arrow" aria-hidden="true">↗</span>
         </a>
-      </div>
-
+      </article>
     </section>
 
   </main>
 
   <footer>
-    <p>
-      ihssan [dot] tinawi [at] gmail [dot] com
-      &nbsp;·&nbsp;
+    <span>ihssan [dot] tinawi [at] gmail [dot] com</span>
+    <span>
       <a href="https://github.com/itinawi" target="_blank" rel="noopener">github.com/itinawi</a>
-      &nbsp;·&nbsp;
-      San Francisco, CA
-    </p>
+      &nbsp;·&nbsp; San Francisco, CA
+    </span>
   </footer>
 
   <!-- Google Analytics -->
